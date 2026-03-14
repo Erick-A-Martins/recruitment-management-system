@@ -1,7 +1,9 @@
 package br.com.erickmartins.gestao_vagas.modules.company.controllers;
 
+import br.com.erickmartins.gestao_vagas.modules.company.dto.JobDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.services.JobService;
 import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +12,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/job")
 public class JobController {
 
     @Autowired
-    private JobService createJobUseCase;
+    private JobService jobService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> create(@Valid @RequestBody JobEntity jobEntity) {
+    public ResponseEntity<Object> create(@Valid @RequestBody JobDTO jobDTO, HttpServletRequest request) {
         try {
-            JobEntity result = this.createJobUseCase.execute(jobEntity);
+            Object companyId = request.getAttribute("company_id");
+
+            JobEntity jobEntity = JobEntity.builder()
+                    .benefits(jobDTO.getBenefits())
+                    .companyId(UUID.fromString(companyId.toString()))
+                    .description(jobDTO.getDescription())
+                    .level(jobDTO.getLevel())
+                    .build();
+
+            JobEntity result = this.jobService.execute(jobEntity);
+
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             e.printStackTrace();
