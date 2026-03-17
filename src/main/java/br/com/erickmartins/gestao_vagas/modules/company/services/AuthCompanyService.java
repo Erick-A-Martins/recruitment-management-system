@@ -1,6 +1,7 @@
 package br.com.erickmartins.gestao_vagas.modules.company.services;
 
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyDTO;
+import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.repositories.CompanyRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class AuthCompanyService {
@@ -26,7 +28,7 @@ public class AuthCompanyService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String execute(AuthCompanyDTO authCompanyDTO) {
+    public AuthCompanyResponseDTO execute(AuthCompanyDTO authCompanyDTO) {
         var company = companyRepository.findByUsername(authCompanyDTO.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário ou senha inválidos."));
 
@@ -39,9 +41,17 @@ public class AuthCompanyService {
         // Se senha for igual gera o token
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        return JWT.create().withIssuer("javagas")
-                .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
+        Instant expiresIn = Instant.now().plus(Duration.ofHours(2));
+
+        String token = JWT.create().withIssuer("javagas")
+                .withExpiresAt(expiresIn)
                 .withSubject(company.getId().toString())
+                .withClaim("roles", List.of("COMPANY"))
                 .sign(algorithm);
+
+        return AuthCompanyResponseDTO.builder()
+                .access_token(token)
+                .expires_in(expiresIn.toEpochMilli())
+                .build();
     }
 }

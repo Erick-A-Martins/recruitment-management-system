@@ -1,6 +1,7 @@
 package br.com.erickmartins.gestao_vagas.modules.company.controllers;
 
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyDTO;
+import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.services.AuthCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class AuthCompanyController {
     @PostMapping("/auth")
     public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO) {
         try {
-            String result = authCompanyService.execute(authCompanyDTO);
+            AuthCompanyResponseDTO result = authCompanyService.execute(authCompanyDTO);
             return ResponseEntity.ok().body(result);
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
