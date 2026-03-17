@@ -45,7 +45,7 @@ public class AuthCandidateService {
         String token = JWT.create()
                 .withIssuer("javagas")
                 .withSubject(candidate.getId().toString())
-                .withClaim("roles", List.of("candidate"))
+                .withClaim("roles", List.of("CANDIDATE"))
                 .withExpiresAt(expiresIn)
                 .sign(algorithm);
 
