@@ -3,6 +3,7 @@ package br.com.erickmartins.gestao_vagas.modules.company.controllers;
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.services.AuthCompanyService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class AuthCompanyController {
     private AuthCompanyService authCompanyService;
 
     @PostMapping("/auth")
+    @Tag(name = "Autenticações")
     public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO) {
         try {
             AuthCompanyResponseDTO result = authCompanyService.execute(authCompanyDTO);
