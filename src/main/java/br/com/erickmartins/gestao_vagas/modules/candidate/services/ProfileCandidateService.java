@@ -1,10 +1,10 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
+import br.com.erickmartins.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -17,7 +17,7 @@ public class ProfileCandidateService {
 
     public ProfileCandidateResponseDTO execute(UUID candidateId) {
         CandidateEntity candidate = candidateRepository.findById(candidateId)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado."));
+                .orElseThrow(UserNotFoundException::new);
 
         return ProfileCandidateResponseDTO.builder()
                 .description(candidate.getDescription())

@@ -23,7 +23,6 @@ public class JWTCandidateProvider {
                     .build()
                     .verify(token);
         } catch (JWTVerificationException ex) {
-            ex.printStackTrace();
             return null;
         }
 

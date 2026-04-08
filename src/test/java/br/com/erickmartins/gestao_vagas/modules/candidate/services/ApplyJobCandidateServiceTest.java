@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.services;
+package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
 import br.com.erickmartins.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.erickmartins.gestao_vagas.exceptions.UserNotFoundException;
