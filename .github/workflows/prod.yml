@@ -30,3 +30,13 @@ jobs:
           tags: |
             erickamartins/gestao_vagas:latest
             erickamartins/gestao_vagas:${{ github.sha }}
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image docker hub
+        run: docker pull erickamartins/gestao_vagas:latest
+      - name: Remove container
+        run: docker rm -f gestao_vagas
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD={{secrets.DATABASE_PASSWORD}} --name gestao-vagas erickamartins/gestao_vagas
