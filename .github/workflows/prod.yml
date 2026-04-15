@@ -48,7 +48,7 @@ jobs:
 
       - name: Run docker container
         run: |
-          docker run -d \ 
+          docker run -d \
             -p 8080:8080 \
             -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
             -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
