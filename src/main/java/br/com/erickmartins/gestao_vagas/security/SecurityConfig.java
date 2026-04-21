@@ -25,7 +25,8 @@ public class SecurityConfig {
             "/swagger-ui/**",
             "/v3/api-docs/**",
             "/swagger-resources/**",
-            "/actuator/**"
+            "/actuator/**",
+            "/images/**"
     };
 
     @Bean
@@ -36,6 +37,8 @@ public class SecurityConfig {
                             .requestMatchers("/company/").permitAll()
                             .requestMatchers("/company/auth").permitAll()
                             .requestMatchers("/candidate/auth").permitAll()
+                            .requestMatchers("/candidate/login").permitAll()
+                            .requestMatchers("/candidate/signIn").permitAll()
                             .requestMatchers(PERMIT_ALL_LIST).permitAll()
                             .anyRequest()
                             .authenticated();

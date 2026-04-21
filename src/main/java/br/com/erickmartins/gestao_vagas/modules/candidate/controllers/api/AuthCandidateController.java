@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.candidate.controllers;
+package br.com.erickmartins.gestao_vagas.modules.candidate.controllers.api;
 
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.AuthCandidateRequestDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.AuthCandidateResponseDTO;
