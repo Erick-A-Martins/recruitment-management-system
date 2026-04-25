@@ -21,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.UUID;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -60,6 +62,7 @@ class JobControllerTest {
                 .build();
 
         var result = mvc.perform(MockMvcRequestBuilders.post("/company/job/")
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(TestUtils.objectToJson(jobDTO))
                         .header("Authorization",
@@ -79,6 +82,7 @@ class JobControllerTest {
                 .build();
 
         mvc.perform(MockMvcRequestBuilders.post("/company/job/")
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(TestUtils.objectToJson(jobDTO))
                         .header("Authorization",
