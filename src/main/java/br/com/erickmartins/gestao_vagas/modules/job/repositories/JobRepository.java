@@ -1,6 +1,6 @@
-package br.com.erickmartins.gestao_vagas.modules.company.repositories;
+package br.com.erickmartins.gestao_vagas.modules.job.repositories;
 
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

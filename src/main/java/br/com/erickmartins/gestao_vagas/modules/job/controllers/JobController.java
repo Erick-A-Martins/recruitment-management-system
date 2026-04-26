@@ -1,8 +1,8 @@
-package br.com.erickmartins.gestao_vagas.modules.company.controllers;
+package br.com.erickmartins.gestao_vagas.modules.job.controllers;
 
-import br.com.erickmartins.gestao_vagas.modules.company.dto.JobDTO;
-import br.com.erickmartins.gestao_vagas.modules.company.services.JobService;
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
+import br.com.erickmartins.gestao_vagas.modules.job.services.JobService;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

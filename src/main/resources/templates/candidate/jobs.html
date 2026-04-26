@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Vagas disponíveis</title>
+  </head>
+  <body class="flex flex-col items-center gap-32 bg-slate-100 min-h-screen font-[Roboto]">
+
+    <nav class="bg-white border rounded-md p-4 mt-12 shadow">
+      <div class="space-x-4">
+        <a href="/candidate/jobs" class="bg-slate-200 rounded-md px-3 py-2">Vagas</a>
+        <a href="/candidate/profile" class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Profile</a>
+      </div>
+    </nav>
+
+    <div class="container mx-auto text-center">
+      <form action="" class="flex gap-4 justify-center">
+        <input type="text" name="filter" placeholder="Busca de vaga" class="w-96 bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-green-600 focus:ring-2">
+        <button type="submit" class="w-24 bg-green-500 text-white p-3 rounded-md hover:bg-green-600 transition-colors duration-200">Buscar</button>
+      </form>
+
+      <div class="max-w-md mx-auto mt-10">
+        <div th:each="job: ${jobs}" class="bg-white rounded p-6 mb-4 shadow-md text-justify">
+
+          <div class="mb-4">
+            <h2 th:text="${job.name}" class="text-2xl font-bold"></h2>
+            <p th:text="${job.level}"></p>
+          </div>
+
+          <hr>
+
+          <div class="mt-4">
+            <p th:text="${job.description}" class="text-slate-500"></p>
+            <p class="text-lg mt-4 font-bold">Benefícios</p>
+            <p th:text="${job.benefits}"></p>
+          </div>
+
+          <div class="flex justify-end">
+            <button class="w-24 bg-green-500 text-white p-3 rounded-md hover:bg-green-600 transition-colors duration-200">Aplicar</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

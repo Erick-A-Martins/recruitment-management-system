@@ -1,7 +1,8 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
-import br.com.erickmartins.gestao_vagas.modules.company.repositories.JobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,16 @@ public class ListAllJobsByFilterService {
     @Autowired
     private JobRepository jobRepository;
 
-    public List<JobEntity> execute(String filter) {
-        return jobRepository.findByDescriptionContainingIgnoreCase(filter);
+    public List<JobDTO> execute(String filter) {
+        List<JobEntity> jobs = jobRepository.findByDescriptionContainingIgnoreCase(filter);
+
+        return jobs.stream()
+                .map(job -> JobDTO.builder()
+                        .name(job.getName())
+                        .description(job.getDescription())
+                        .benefits(job.getBenefits())
+                        .level(job.getLevel())
+                        .build())
+                .toList();
     }
 }

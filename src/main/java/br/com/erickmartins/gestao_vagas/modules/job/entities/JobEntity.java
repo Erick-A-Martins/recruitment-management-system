@@ -1,5 +1,6 @@
-package br.com.erickmartins.gestao_vagas.modules.company.entities;
+package br.com.erickmartins.gestao_vagas.modules.job.entities;
 
+import br.com.erickmartins.gestao_vagas.modules.company.entities.CompanyEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class JobEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    private String name;
     private String description;
     private String benefits;
 

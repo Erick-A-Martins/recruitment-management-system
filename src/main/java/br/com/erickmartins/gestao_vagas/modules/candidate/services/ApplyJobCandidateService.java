@@ -5,7 +5,7 @@ import br.com.erickmartins.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.ApplyJobEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.ApplyJobRepository;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
-import br.com.erickmartins.gestao_vagas.modules.company.repositories.JobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

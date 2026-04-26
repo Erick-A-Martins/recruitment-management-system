@@ -1,9 +1,9 @@
-package br.com.erickmartins.gestao_vagas.modules.company.services;
+package br.com.erickmartins.gestao_vagas.modules.job.services;
 
 import br.com.erickmartins.gestao_vagas.exceptions.CompanyNotFoundException;
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import br.com.erickmartins.gestao_vagas.modules.company.repositories.CompanyRepository;
-import br.com.erickmartins.gestao_vagas.modules.company.repositories.JobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

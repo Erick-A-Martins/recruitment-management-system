@@ -6,9 +6,8 @@ import br.com.erickmartins.gestao_vagas.modules.candidate.entities.ApplyJobEntit
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.ApplyJobRepository;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
-import br.com.erickmartins.gestao_vagas.modules.candidate.services.ApplyJobCandidateService;
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
-import br.com.erickmartins.gestao_vagas.modules.company.repositories.JobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.repositories.JobRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

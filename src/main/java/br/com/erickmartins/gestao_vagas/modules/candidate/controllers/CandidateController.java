@@ -7,7 +7,8 @@ import br.com.erickmartins.gestao_vagas.modules.candidate.services.ApplyJobCandi
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.CandidateService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ListAllJobsByFilterService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ProfileCandidateService;
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -94,14 +95,14 @@ public class CandidateController {
             })
     })
     @SecurityRequirement(name = "jwt_auth")
-    public List<JobEntity> findJobByFilter(@RequestParam String filter) {
+    public List<JobDTO> findJobByFilter(@RequestParam String filter) {
         return listAllJobsByFilterService.execute(filter);
     }
 
     @PostMapping("/job/apply")
     @PreAuthorize("hasRole('CANDIDATE')")
     @Operation(summary = "Inscrição do candidato para uma vaga",
-    description = "Essa função é responsável por realizar a inscrição do candidato em uma vaga.")
+            description = "Essa função é responsável por realizar a inscrição do candidato em uma vaga.")
     @SecurityRequirement(name = "jwt_auth")
     public ResponseEntity<Object> applyJob(HttpServletRequest request, @RequestBody UUID jobId) {
         var candidateId = request.getAttribute("candidate_id");

@@ -1,6 +1,6 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.entities;
 
-import br.com.erickmartins.gestao_vagas.modules.company.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
