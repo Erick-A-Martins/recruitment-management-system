@@ -5,6 +5,7 @@ import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateRe
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -25,6 +26,22 @@ public class ProfileCandidateService {
                 .email(candidate.getEmail())
                 .name(candidate.getName())
                 .id(candidate.getId())
+                .build();
+    }
+
+    public ProfileCandidateResponseDTO getCandidateDetails() {
+        String username = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        CandidateEntity candidate = candidateRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        return ProfileCandidateResponseDTO.builder()
+                .id(candidate.getId())
+                .name(candidate.getName())
+                .description(candidate.getDescription())
+                .email(candidate.getEmail())
+                .username(candidate.getUsername())
                 .build();
     }
 }
