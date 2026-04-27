@@ -2,12 +2,13 @@ package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
 import br.com.erickmartins.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.erickmartins.gestao_vagas.exceptions.UserNotFoundException;
-import br.com.erickmartins.gestao_vagas.modules.candidate.entities.ApplyJobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.ApplyJobEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
-import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.ApplyJobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.repositories.ApplyJobRepository;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import br.com.erickmartins.gestao_vagas.modules.job.repositories.JobRepository;
+import br.com.erickmartins.gestao_vagas.modules.job.services.ApplyJobCandidateService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

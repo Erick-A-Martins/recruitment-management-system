@@ -1,6 +1,6 @@
-package br.com.erickmartins.gestao_vagas.modules.candidate.entities;
+package br.com.erickmartins.gestao_vagas.modules.job.entities;
 
-import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
+import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name = "apply_jobs")
+@Entity
+@Table(name = "apply_jobs")
 @Data
 @Builder
 @AllArgsConstructor

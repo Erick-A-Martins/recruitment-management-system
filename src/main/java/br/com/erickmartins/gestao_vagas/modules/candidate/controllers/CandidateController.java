@@ -1,9 +1,9 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.controllers;
 
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
-import br.com.erickmartins.gestao_vagas.modules.candidate.entities.ApplyJobEntity;
+import br.com.erickmartins.gestao_vagas.modules.job.entities.ApplyJobEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
-import br.com.erickmartins.gestao_vagas.modules.candidate.services.ApplyJobCandidateService;
+import br.com.erickmartins.gestao_vagas.modules.job.services.ApplyJobCandidateService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.CandidateService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ListAllJobsByFilterService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ProfileCandidateService;

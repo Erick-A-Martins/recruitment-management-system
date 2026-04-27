@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <title>Login do candidato</title>
-    </head>
-    <body class="bg-slate-100 min-h-screen flex justify-center items-center font-[Roboto]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>Login do candidato</title>
+</head>
+<body class="bg-slate-100 min-h-screen flex justify-center items-center font-[Roboto]">
 
-        <div class="flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-8">
 
-            <div class="flex justify-center items-center w-full gap-4">
-                <img th:src="@{/images/logo.png}" alt="Logo" class="w-[32px] h-[32px]">
-                <h1 class="text-slate-700 text-4xl font-semibold">
-                    Gestão de Vagas
-                </h1>
+    <div class="flex justify-center items-center w-full gap-4">
+        <img th:src="@{/images/logo.png}" alt="Logo" class="w-[32px] h-[32px]">
+        <h1 class="text-slate-700 text-4xl font-semibold">
+            Gestão de Vagas
+        </h1>
+    </div>
+
+    <form th:action="@{/candidate/signIn}" method="post" class="w-full max-w-md flex gap-24">
+        <div class="w-full border space-y-4 bg-white rounded-md p-12 shadow">
+
+            <div>
+                <p class="text-gray-400">Por favor insira seus dados</p>
+                <h2 class="font-bold text-2xl text-slate-700">Bem vindo de volta!</h2>
             </div>
 
-            <form th:action="@{/candidate/signIn}" method="post" class="w-full max-w-md flex gap-24">
-                <div class="w-full border space-y-4 bg-white rounded-md p-12 shadow">
+            <input type="text" name="username"
+                   class="w-full bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-green-600 focus:ring-2"
+                   placeholder="Usuário">
+            <input type="password" name="password"
+                   class="w-full bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-green-600 focus:ring-2"
+                   placeholder="Senha">
 
-                    <div>
-                        <p class="text-gray-400">Por favor insira seus dados</p>
-                        <h2 class="font-bold text-2xl text-slate-700">Bem vindo de volta!</h2>
-                    </div>
+            <p class="text-red-400" th:if="${param.error}">Usuário ou senha inválidos</p>
 
-                    <input type="text" name="username"
-                           class="w-full bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-green-600 focus:ring-2"
-                           placeholder="Usuário">
-                    <input type="password" name="password"
-                           class="w-full bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-green-600 focus:ring-2"
-                           placeholder="Senha">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
-                    <p class="text-red-400" th:if="${param.error}">Usuário ou senha inválidos</p>
-
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-
-                    <button class="w-full bg-green-500 text-white p-3 rounded-md hover:bg-green-600 transition-colors duration-200">Entrar</button>
-                    <span class="w-full block text-center text-gray-400">
+            <button class="w-full bg-green-500 text-white p-3 rounded-md hover:bg-green-600 transition-colors duration-200">
+                Entrar
+            </button>
+            <span class="w-full block text-center text-gray-400">
                         Ainda não tem uma conta?
-                        <a href="" class="text-green-500 hover:text-green-600 transition-colors duration-200 underline underline-offset-2">Registre-se</a>
+                        <a href=""
+                           class="text-green-500 hover:text-green-600 transition-colors duration-200 underline underline-offset-2">Registre-se</a>
                     </span>
-                </div>
-            </form>
-
         </div>
+    </form>
 
-    </body>
+</div>
+
+</body>
 </html>

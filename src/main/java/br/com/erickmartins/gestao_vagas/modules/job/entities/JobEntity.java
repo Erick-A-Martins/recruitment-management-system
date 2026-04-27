@@ -12,7 +12,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name = "job")
+@Entity
+@Table(name = "job")
 @Data
 @Builder
 @AllArgsConstructor

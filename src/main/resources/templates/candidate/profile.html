@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
     <title>Profile do candidato</title>
-  </head>
-  <body class="flex flex-col items-center gap-32 bg-slate-100 min-h-screen font-[Roboto]">
+</head>
+<body class="flex flex-col items-center gap-32 bg-slate-100 min-h-screen font-[Roboto]">
 
-    <nav class="bg-white border rounded-md p-4 mt-12 shadow">
-      <div class="space-x-4">
-        <a href="/candidate/jobs" class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Vagas</a>
+<nav class="bg-white border rounded-md p-4 mt-12 shadow">
+    <div class="space-x-4">
+        <a href="/candidate/jobs"
+           class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Vagas</a>
         <a href="/candidate/profile" class="bg-slate-200 rounded-md px-3 py-2">Profile</a>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="max-w-md w-full flex flex-col gap-8">
+<div class="max-w-md w-full flex flex-col gap-8">
 
-      <div class="border space-y-4 bg-white rounded-md p-12 shadow">
+    <div class="border space-y-4 bg-white rounded-md p-12 shadow">
 
         <div class="mb-4">
-          <h2 class="text-2xl font-bold text-slate-900" th:text="${candidate.name}"></h2>
-          <p th:text="${candidate.description}" class="text-slate-500"></p>
+            <h2 class="text-2xl font-bold text-slate-900" th:text="${candidate.name}"></h2>
+            <p th:text="${candidate.description}" class="text-slate-500"></p>
         </div>
 
         <hr>
 
         <div class="flex justify-between">
-          <div>
-            <p class="font-bold text-slate-700">Username</p>
-            <p th:text="${candidate.username}"></p>
-          </div>
-          <div>
-            <p class="font-bold text-slate-700">Email</p>
-            <p th:text="${candidate.email}"></p>
-          </div>
+            <div>
+                <p class="font-bold text-slate-700">Username</p>
+                <p th:text="${candidate.username}"></p>
+            </div>
+            <div>
+                <p class="font-bold text-slate-700">Email</p>
+                <p th:text="${candidate.email}"></p>
+            </div>
         </div>
 
-      </div>
     </div>
+</div>
 
-  </body>
+</body>
 </html>

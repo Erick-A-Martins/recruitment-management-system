@@ -19,6 +19,7 @@ public class ListAllJobsByFilterService {
 
         return jobs.stream()
                 .map(job -> JobDTO.builder()
+                        .id(job.getId())
                         .name(job.getName())
                         .description(job.getDescription())
                         .benefits(job.getBenefits())
