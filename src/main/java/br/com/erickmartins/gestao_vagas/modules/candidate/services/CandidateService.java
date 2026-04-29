@@ -1,6 +1,7 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
 import br.com.erickmartins.gestao_vagas.exceptions.UserFoundException;
+import br.com.erickmartins.gestao_vagas.modules.candidate.dto.CreateCandidateDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,25 @@ public class CandidateService {
         candidateEntity.setPassword(password);
 
         return this.candidateRepository.save(candidateEntity);
+    }
+
+    public void execute(CreateCandidateDTO candidateDTO) {
+        candidateRepository.findByUsernameOrEmail(candidateDTO.getUsername(), candidateDTO.getEmail())
+                .ifPresent((user) -> {
+                    throw new UserFoundException();
+                });
+
+        String password = passwordEncoder.encode(candidateDTO.getPassword());
+        candidateDTO.setPassword(password);
+
+        CandidateEntity candidate = CandidateEntity.builder()
+                .name(candidateDTO.getName())
+                .username(candidateDTO.getUsername())
+                .email(candidateDTO.getEmail())
+                .password(candidateDTO.getPassword())
+                .description(candidateDTO.getDescription())
+                .build();
+
+        candidateRepository.save(candidate);
     }
 }
