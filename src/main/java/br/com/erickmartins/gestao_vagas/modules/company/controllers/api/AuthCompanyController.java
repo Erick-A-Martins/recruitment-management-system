@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.company.controllers;
+package br.com.erickmartins.gestao_vagas.modules.company.controllers.api;
 
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;

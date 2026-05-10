@@ -1,7 +1,6 @@
-package br.com.erickmartins.gestao_vagas.security;
+package br.com.erickmartins.gestao_vagas.security.api;
 
-import br.com.erickmartins.gestao_vagas.providers.JWTProvider;
-import com.auth0.jwt.interfaces.DecodedJWT;
+import br.com.erickmartins.gestao_vagas.providers.JWTCandidateProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,10 +17,10 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class SecurityCompanyFilter extends OncePerRequestFilter {
+public class SecurityCandidateFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JWTProvider jwtProvider;
+    private JWTCandidateProvider jwtCandidateProvider;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
@@ -30,27 +29,29 @@ public class SecurityCompanyFilter extends OncePerRequestFilter {
 //        SecurityContextHolder.getContext().setAuthentication(null);
         String header = request.getHeader("Authorization");
 
-        if (request.getRequestURI().startsWith("/company")) {
+        if (request.getRequestURI().startsWith("/candidate")) {
             if (header != null) {
-                DecodedJWT token = jwtProvider.validateToken(header);
+                var token = jwtCandidateProvider.validateToken(header);
 
                 if (token == null) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     return;
                 }
 
+                request.setAttribute("candidate_id", token.getSubject());
                 List<String> roles = token.getClaim("roles").asList(String.class);
                 List<SimpleGrantedAuthority> grants = roles.stream()
                         .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()))
                         .toList();
 
-                request.setAttribute("company_id", token.getSubject());
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                         token.getSubject(),
                         null,
-                        grants);
+                        grants
+                );
 
                 SecurityContextHolder.getContext().setAuthentication(auth);
+
             }
         }
 
