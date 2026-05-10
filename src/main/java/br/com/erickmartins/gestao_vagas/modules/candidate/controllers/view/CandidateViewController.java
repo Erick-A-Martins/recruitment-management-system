@@ -3,7 +3,6 @@ package br.com.erickmartins.gestao_vagas.modules.candidate.controllers.view;
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.CreateCandidateDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.CandidateService;
-import br.com.erickmartins.gestao_vagas.modules.candidate.services.ListAllJobsByFilterService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ProfileCandidateService;
 import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
 import br.com.erickmartins.gestao_vagas.modules.job.services.ApplyJobCandidateService;
