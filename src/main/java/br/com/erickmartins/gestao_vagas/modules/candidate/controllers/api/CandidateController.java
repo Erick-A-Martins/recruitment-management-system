@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.candidate.controllers;
+package br.com.erickmartins.gestao_vagas.modules.candidate.controllers.api;
 
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.erickmartins.gestao_vagas.modules.job.entities.ApplyJobEntity;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/candidate")
+@RequestMapping("/api/candidate")
 @Tag(name = "Candidato", description = "Informações do candidato")
 public class CandidateController {
 

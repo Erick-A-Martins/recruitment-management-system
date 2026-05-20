@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.company.controllers;
+package br.com.erickmartins.gestao_vagas.modules.company.controllers.api;
 
 import br.com.erickmartins.gestao_vagas.modules.company.entities.CompanyEntity;
 import br.com.erickmartins.gestao_vagas.modules.company.services.CompanyService;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/api/company")
 public class CompanyController {
 
     @Autowired
