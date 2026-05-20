@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/company/job")
+@RequestMapping("/api/company/job")
 public class JobController {
 
     @Autowired
