@@ -1,6 +1,7 @@
 package br.com.erickmartins.gestao_vagas.modules.job.controllers;
 
 import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
+import br.com.erickmartins.gestao_vagas.modules.job.mapper.JobMapper;
 import br.com.erickmartins.gestao_vagas.modules.job.services.JobService;
 import br.com.erickmartins.gestao_vagas.modules.job.entities.JobEntity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,18 +40,12 @@ public class JobController {
     @SecurityRequirement(name = "jwt_auth")
     public ResponseEntity<Object> create(@Valid @RequestBody JobDTO jobDTO, HttpServletRequest request) {
         try {
-            Object companyId = request.getAttribute("company_id");
+            Object companyIdObj = request.getAttribute("company_id");
+            UUID companyId = UUID.fromString(companyIdObj.toString());
 
-            JobEntity jobEntity = JobEntity.builder()
-                    .benefits(jobDTO.getBenefits())
-                    .companyId(UUID.fromString(companyId.toString()))
-                    .description(jobDTO.getDescription())
-                    .level(jobDTO.getLevel())
-                    .build();
+            JobEntity result = this.jobService.create(jobDTO, companyId);
 
-            JobEntity result = this.jobService.execute(jobEntity);
-
-            return ResponseEntity.ok().body(result);
+            return ResponseEntity.ok().body(JobMapper.toDTO(result));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.security;
+package br.com.erickmartins.gestao_vagas.security.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/candidate/login").permitAll()
                         .requestMatchers("/candidate/signIn").permitAll()
                         .requestMatchers("/candidate/create").permitAll()
+                        .requestMatchers("/company/jobs").permitAll()
                         .requestMatchers(PERMIT_ALL_LIST).permitAll()
                         .anyRequest()
                         .authenticated())
