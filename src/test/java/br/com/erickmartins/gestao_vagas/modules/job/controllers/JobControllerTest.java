@@ -1,4 +1,4 @@
-package br.com.erickmartins.gestao_vagas.modules.company.controllers;
+package br.com.erickmartins.gestao_vagas.modules.job.controllers;
 
 import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
 import br.com.erickmartins.gestao_vagas.modules.company.entities.CompanyEntity;
