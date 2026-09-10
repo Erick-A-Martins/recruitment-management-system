@@ -39,4 +39,22 @@ public class JobService {
                 .map(JobMapper::toDTO)
                 .toList();
     }
+
+    public List<JobDTO> listAllJobsByCompany(UUID companyId) {
+        List<JobEntity> jobs = jobRepository.findByCompanyId(companyId);
+
+        return jobs.stream()
+                .map(JobMapper::toDTO)
+                .toList();
+    }
+
+    public void deleteJob(UUID id) {
+        jobRepository.deleteById(id);
+    }
+
+    public JobDTO getJobByCompany(UUID jobId) {
+        JobEntity job = jobRepository.getReferenceById(jobId);
+
+        return JobMapper.toDTO(job);
+    }
 }
