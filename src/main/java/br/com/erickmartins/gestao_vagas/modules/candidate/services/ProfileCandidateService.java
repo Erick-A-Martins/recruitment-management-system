@@ -1,13 +1,14 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.services;
 
 import br.com.erickmartins.gestao_vagas.exceptions.UserNotFoundException;
-import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
+import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -16,11 +17,11 @@ public class ProfileCandidateService {
     @Autowired
     private CandidateRepository candidateRepository;
 
-    public ProfileCandidateResponseDTO execute(UUID candidateId) {
+    public ProfileCandidateDTO execute(UUID candidateId) {
         CandidateEntity candidate = candidateRepository.findById(candidateId)
                 .orElseThrow(UserNotFoundException::new);
 
-        return ProfileCandidateResponseDTO.builder()
+        return ProfileCandidateDTO.builder()
                 .description(candidate.getDescription())
                 .username(candidate.getUsername())
                 .email(candidate.getEmail())
@@ -29,14 +30,14 @@ public class ProfileCandidateService {
                 .build();
     }
 
-    public ProfileCandidateResponseDTO getCandidateDetails() {
-        String username = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
+    public ProfileCandidateDTO getCandidateDetails() {
+        String username = Objects.requireNonNull(SecurityContextHolder
+                        .getContext()
+                        .getAuthentication())
                 .getName();
 
         CandidateEntity candidate = candidateRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
-        return ProfileCandidateResponseDTO.builder()
+        return ProfileCandidateDTO.builder()
                 .id(candidate.getId())
                 .name(candidate.getName())
                 .description(candidate.getDescription())
