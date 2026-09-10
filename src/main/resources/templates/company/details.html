@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>Detalhes</title>
+</head>
+<body class="flex flex-col my-12 items-center gap-12 bg-slate-100 min-h-screen font-[Roboto]">
+
+
+<div class="flex items-center gap-4">
+    <a href="/company/jobs/list"
+       class="flex items-center h-12 p-4 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200">
+        Voltar</a>
+
+    <nav class="bg-white border rounded-md p-4 shadow">
+        <div class="space-x-4">
+            <a href="/company/jobs"
+               class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Cadastro</a>
+            <a href="/company/jobs/list"
+               class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Listagem</a>
+            <a href="/company/logout"
+               class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Sair</a>
+        </div>
+    </nav>
+</div>
+
+
+<div class="w-full h-96 bg-white p-6 shadow-md gap-4">
+    <h1 class="text-4xl text-center" th:text="${job.name}"></h1>
+    <p class="text-slate-500 mb-8 text-center" th:text="${job.level}"></p>
+
+    <div class="flex flex-col gap-8 w-full lg:w-[36rem] m-auto">
+        <div>
+            <p class="text-2xl">Benefícios</p>
+            <p th:text="${job.benefits}"></p>
+        </div>
+
+        <div>
+            <p class="text-2xl">Descrição</p>
+            <p th:text="${job.description}"></p>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-2xl">Candidatos</h2>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 container mx-auto">
+
+    <div class="bg-white rounded p-6 mb-4 shadow-md text-justify" th:each="candidate: ${candidates}">
+        <h3 class="text-xl mb-4" th:text="${candidate.name}"></h3>
+        <div class="flex justify-between">
+            <p class="font-bold">E-mail:</p>
+            <p th:text="${candidate.email}"></p>
+        </div>
+        <div class="flex justify-between">
+            <p class="font-bold">Nome de Usuário:</p>
+            <p th:text="${candidate.username}"></p>
+        </div>
+        <div class="flex justify-between">
+            <p class="font-bold">Descrição:</p>
+            <p th:text="${candidate.description}"></p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

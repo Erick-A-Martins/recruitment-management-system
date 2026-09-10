@@ -27,4 +27,6 @@ public interface JobRepository extends JpaRepository<JobEntity, UUID> {
             @Param("candidateId") UUID candidateId,
             @Param("filter") String filter
     );
+
+    List<JobEntity> findByCompanyId(UUID companyId);
 }

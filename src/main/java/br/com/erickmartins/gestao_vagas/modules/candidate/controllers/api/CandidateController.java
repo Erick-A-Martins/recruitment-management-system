@@ -1,6 +1,6 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.controllers.api;
 
-import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
+import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateDTO;
 import br.com.erickmartins.gestao_vagas.modules.job.entities.ApplyJobEntity;
 import br.com.erickmartins.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.erickmartins.gestao_vagas.modules.job.services.ApplyJobCandidateService;
@@ -68,7 +68,7 @@ public class CandidateController {
             description = "Essa função é responsável por buscar as informações do perfil do candidato")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
-                    @Content(schema = @Schema(implementation = ProfileCandidateResponseDTO.class))
+                    @Content(schema = @Schema(implementation = ProfileCandidateDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Usuário não encontrado.")
     })
@@ -78,7 +78,7 @@ public class CandidateController {
         var candidateId = request.getAttribute("candidate_id");
 
         try {
-            ProfileCandidateResponseDTO profile = profileCandidateService.execute(UUID.fromString(candidateId.toString()));
+            ProfileCandidateDTO profile = profileCandidateService.execute(UUID.fromString(candidateId.toString()));
             return ResponseEntity.ok().body(profile);
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());

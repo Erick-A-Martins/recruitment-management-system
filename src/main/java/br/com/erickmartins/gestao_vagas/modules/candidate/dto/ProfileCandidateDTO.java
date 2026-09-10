@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileCandidateResponseDTO {
+public class ProfileCandidateDTO {
 
     @Schema(example = "Desenvolvedor Java")
     private String description;

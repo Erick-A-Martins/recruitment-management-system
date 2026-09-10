@@ -1,7 +1,7 @@
 package br.com.erickmartins.gestao_vagas.modules.candidate.controllers.view;
 
 import br.com.erickmartins.gestao_vagas.modules.candidate.dto.CreateCandidateDTO;
-import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
+import br.com.erickmartins.gestao_vagas.modules.candidate.dto.ProfileCandidateDTO;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.CandidateService;
 import br.com.erickmartins.gestao_vagas.modules.candidate.services.ProfileCandidateService;
 import br.com.erickmartins.gestao_vagas.modules.job.dto.JobDTO;
@@ -74,7 +74,7 @@ public class CandidateViewController {
     @GetMapping("/profile")
     @PreAuthorize("hasRole('CANDIDATE')")
     public String profile(Model model) {
-        ProfileCandidateResponseDTO candidate = profileCandidateService.getCandidateDetails();
+        ProfileCandidateDTO candidate = profileCandidateService.getCandidateDetails();
         model.addAttribute("candidate", candidate);
         return "candidate/profile";
     }
@@ -86,13 +86,11 @@ public class CandidateViewController {
         if (filter == null) {
             filter = "";
         }
-        ProfileCandidateResponseDTO candidate = profileCandidateService.getCandidateDetails();
+        ProfileCandidateDTO candidate = profileCandidateService.getCandidateDetails();
 
         List<JobDTO> jobs = jobService.getAvailableJobs(candidate.getId(), filter);
 
         model.addAttribute("jobs", jobs);
-
-        System.out.println(jobs);
 
         return "candidate/jobs";
     }
@@ -100,7 +98,7 @@ public class CandidateViewController {
     @PostMapping("/jobs/apply")
     @PreAuthorize("hasRole('CANDIDATE')")
     public String applyJob(@RequestParam("jobId") UUID jobId) {
-        ProfileCandidateResponseDTO candidate = profileCandidateService.getCandidateDetails();
+        ProfileCandidateDTO candidate = profileCandidateService.getCandidateDetails();
         applyJobCandidateService.execute(candidate.getId(), jobId);
         return "redirect:/candidate/jobs";
     }

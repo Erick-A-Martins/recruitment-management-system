@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class CandidateService {
 
@@ -48,5 +51,9 @@ public class CandidateService {
                 .build();
 
         candidateRepository.save(candidate);
+    }
+
+    public List<CandidateEntity> getCandidatesByJob(UUID jobId) {
+        return candidateRepository.findCandidatesByJobId(jobId);
     }
 }
