@@ -13,14 +13,14 @@ The frontend and backend live in the same repository, with clear responsibilitie
 
 ## Technologies
 
-- Java 21 and Spring Boot
-- Spring MVC, Spring Data JPA, and Spring Security
-- Thymeleaf and Thymeleaf Spring Security Extras
-- PostgreSQL
+- Java 21 and Spring Boot &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
+- Spring MVC, Spring Data JPA, and Spring Security &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" /> 
+- Thymeleaf and Thymeleaf Spring Security Extras &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg" />
+- PostgreSQL &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+- Maven, Docker &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+- Swagger/OpenAPI, Actuator, Prometheus, and Grafana &nbsp; <img style="width: 20px; height: 20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" />
 - JWT authentication
-- Maven, Docker
-- Swagger/OpenAPI, Actuator, Prometheus, and Grafana
-- JUnit, H2, and JaCoCo for testing and coverage
+- JUnit, H2, and JaCoCo for testing and coverage 
 
 ## Running Locally
 
