@@ -11,7 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 public class CandidateSecurityConfig {
 
     @Bean
-
     SecurityFilterChain candidateSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .securityMatcher("/candidate/**")
@@ -28,7 +27,12 @@ public class CandidateSecurityConfig {
                         .loginProcessingUrl("/candidate/signIn")
                         .defaultSuccessUrl("/candidate/profile", true)
                         .failureUrl("/candidate/login?error=true")
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/candidate/logout")
+                        .logoutSuccessUrl("/candidate/login?logout=true")
                 );
+
         return http.build();
     }
 

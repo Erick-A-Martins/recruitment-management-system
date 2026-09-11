@@ -10,12 +10,20 @@
           rel="stylesheet">
     <title>Cadastro de Usuário</title>
 </head>
-<body class="bg-slate-100 min-h-screen flex justify-center items-center font-[Roboto]">
+<body class="bg-slate-100 min-h-screen flex flex-col gap-8 justify-center items-center font-[Roboto]">
+
+<nav class="bg-white border rounded-md p-4 shadow">
+    <div class="flex space-x-4">
+        <a href="/candidate/create" class="bg-slate-200 rounded-md px-3 py-2">Candidato</a>
+        <a href="/company/create"
+           class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Empresa</a>
+    </div>
+</nav>
 
 <div class="w-lg flex flex-col items-center gap-8">
 
     <div class="flex justify-center items-center w-full gap-4">
-        <img th:src="@{/images/logo.png}" alt="Logo" class="w-[32px] h-[32px]">
+        <img th:src="@{/images/signin-candidate.png}" alt="Logo" class="w-[32px] h-[32px]">
         <h1 class="text-slate-700 text-4xl font-semibold">
             Gestão de Vagas
         </h1>
