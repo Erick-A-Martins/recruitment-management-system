@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>Página não encontrada</title>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col gap-8 justify-center items-center font-[Roboto]">
+
+    <div class="flex flex-col text-center">
+        <h1 class="text-8xl">404</h1>
+        <h2 class="text-4xl">Página não encontrada!</h2>
+    </div>
+
+    <p class="text-xl font-light">
+        A página que você está procurando não existe.
+    </p>
+
+    <a class="bg-slate-950 text-white p-3 rounded-md hover:bg-slate-700 transition-colors duration-200" th:href="@{/candidate}">
+        Voltar para o início
+    </a>
+
+</body>
+</html>
