@@ -10,7 +10,16 @@
           rel="stylesheet">
     <title>Cadastro de Empresa</title>
 </head>
-<body class="bg-slate-100 min-h-screen flex justify-center items-center font-[Roboto]">
+<body class="bg-slate-100 min-h-screen flex flex-col gap-8 justify-center items-center font-[Roboto]">
+
+<nav class="bg-white border rounded-md p-4 shadow">
+    <div class="flex space-x-4">
+        <a href="/candidate/create"
+           class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Candidato</a>
+        <a href="/company/create"
+           class="bg-slate-200 rounded-md px-3 py-2">Empresa</a>
+    </div>
+</nav>
 
 <div class="w-lg flex flex-col items-center gap-8">
 
@@ -74,7 +83,8 @@
                     <input type="password" name="confirmPassword" th:field="*{confirmPassword}"
                            class="w-full bg-white border text-gray-900 text-md rounded-md block p-3 focus:outline-none focus:ring-sky-600 focus:ring-2"
                            placeholder="Confirme sua senha">
-                    <p class="text-red-400" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
+                    <p class="text-red-400" th:if="${#fields.hasErrors('confirmPassword')}"
+                       th:errors="*{confirmPassword}"></p>
                 </div>
             </div>
 
