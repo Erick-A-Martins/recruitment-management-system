@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
-    <title>Detalhes</title>
+    <title>Detalhes da Vaga</title>
 </head>
 <body class="flex flex-col my-12 items-center gap-12 bg-slate-100 min-h-screen font-[Roboto]">
 
@@ -19,13 +19,16 @@
         Voltar</a>
 
     <nav class="bg-white border rounded-md p-4 shadow">
-        <div class="space-x-4">
+        <div class="flex space-x-4">
             <a href="/company/jobs"
                class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Cadastro</a>
             <a href="/company/jobs/list"
                class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Listagem</a>
-            <a href="/company/logout"
-               class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">Sair</a>
+            <form th:action="@{/company/logout}" method="post"
+                  class="bg-slate-50 rounded-md px-3 py-2 hover:bg-slate-200 transition-colors duration-200">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Sair</button>
+            </form>
         </div>
     </nav>
 </div>

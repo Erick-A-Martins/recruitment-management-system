@@ -28,6 +28,10 @@ public class CompanySecurityConfig {
                         .loginProcessingUrl("/company/signIn")
                         .defaultSuccessUrl("/company/jobs", true)
                         .failureUrl("/company/login?error=true")
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/company/logout")
+                        .logoutSuccessUrl("/company/login?logout=true")
                 );
 
         return http.build();
